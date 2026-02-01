@@ -1,3 +1,5 @@
+<?php  require_once __DIR__ ."/components/header.php" ?>
+
 <!--slider area start-->
 <section class="slider_section d-flex align-items-center" data-bgimg="assets/img/slider/slider3.jpg">
     <div class="slider_area owl-carousel">
@@ -609,3 +611,4 @@
     </div>
 </section>
 <!--shipping area end-->
+<?php  require_once __DIR__ ."/components/footer.php" ?>

@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -10,7 +11,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="">
 
     <!-- CSS 
     ========================= -->
@@ -18,7 +19,7 @@
 
     <!-- Plugins CSS -->
     <link rel="stylesheet" href="<?= 'assets/css/plugins.css' ?>">
-<!-- assets/css/plugins.css -->
+    <!-- assets/css/plugins.css -->
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/custom.css">
@@ -32,6 +33,9 @@
     <div class="off_canvars_overlay">
 
     </div>
+
+
+
     <div class="Offcanvas_menu">
         <div class="container">
             <div class="row">
@@ -43,15 +47,7 @@
                         <div class="canvas_close">
                             <a href="javascript:void(0)"><i class="ion-android-close"></i></a>
                         </div>
-                        <div class="support_info">
-                            <p>Any Enquiry: <a href="tel:">+56985475235</a></p>
-                        </div>
-                        <div class="top_right text-right">
-                            <ul>
-                                <li><a href="my-account.html"> My Account </a></li>
-                                <li><a href="checkout.html"> Checkout </a></li>
-                            </ul>
-                        </div>
+
                         <div class="search_container">
                             <form action="#">
                                 <div class="search_box">
@@ -62,9 +58,15 @@
                         </div>
 
                         <div class="middel_right_info">
-                            <div class="header_wishlist">
-                                <a href="wishlist.html"><img src="assets/img/user.png" alt=""></a>
-                            </div>
+
+                            <?php if (!isset($_SESSION['user_id'])): ?>
+                                <div class="header_wishlist">
+                                    <a href="/register"><img src="assets/img/user.png" alt=""></a>
+                                </div>
+                            <?php endif; ?>
+
+
+
                             <div class="mini_cart_wrapper">
                                 <a href="javascript:void(0)"><img src="assets/img/shopping-bag.png" alt=""></a>
                                 <span class="cart_quantity">2</span>
@@ -122,7 +124,7 @@
                         <div id="menu" class="text-left ">
                             <ul class="offcanvas_main_menu">
                                 <li class="menu-item-has-children active">
-                                    <a href="#">Home</a>
+                                    <a href="/home">Home</a>
                                 </li>
                                 <li class="menu-item-has-children">
                                     <a href="product-details.html">product</a>
@@ -130,8 +132,8 @@
                                 <li class="menu-item-has-children">
                                     <a href="#">pages </a>
                                     <ul class="sub-menu">
-                                        <li><a href="about.html">About Us</a></li>
-                                        <li><a href="contact.html">contact</a></li>
+                                        <li><a href="/about">About Us</a></li>
+                                        <li><a href="/contact">contact</a></li>
                                         <li><a href="privacy-policy.html">privacy policy</a></li>
                                         <li><a href="faq.html">Frequently Questions</a></li>
                                         <li><a href="login.html">login</a></li>
@@ -151,10 +153,7 @@
                                     </ul>
                                 </li>
                                 <li class="menu-item-has-children">
-                                    <a href="login.html">my account</a>
-                                </li>
-                                <li class="menu-item-has-children">
-                                    <a href="contact.html"> Contact Us</a>
+                                    <a href="/contact"> Contact Us</a>
                                 </li>
                             </ul>
                         </div>
@@ -175,37 +174,16 @@
         </div>
     </div>
     <!--Offcanvas menu area end-->
-
     <header>
         <div class="main_header">
-            <!--header top start-->
-            <div class="header_top">
-                <div class="container">
-                    <div class="row align-items-center">
-                        <div class="col-lg-6 col-md-6">
-                            <div class="support_info">
-                                <p>Email: <a href="mailto:">support@drophunt.com</a></p>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6">
-                            <div class="top_right text-right">
-                                <ul>
-                                    <li><a href="my-account.html">Account</a></li>
-                                    <li><a href="checkout.html">Checkout</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--header top start-->
+
             <!--header middel start-->
             <div class="header_middle">
                 <div class="container">
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-6">
                             <div class="logo">
-                                <a href="index-2.html"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="/home"><img src="assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-6">
@@ -219,9 +197,37 @@
                                     </form>
                                 </div>
                                 <div class="middel_right_info">
-                                    <div class="header_wishlist">
-                                        <a href="#"><img src="assets/img/user.png" alt=""></a>
-                                    </div>
+
+
+                                    <?php if (!isset($_SESSION['user_id'])): ?>
+                                        <div class="header_wishlist">
+                                            <a href="/register"><img src="assets/img/user.png" alt=""></a>
+                                        </div>
+                                    <?php endif; ?>
+                                    <?php
+                                    if (isset($_SESSION['user_id'])): ?>
+                                        <div class="welcome-container">
+                                            <div class="welcome-message">
+                                                Welcome, <span class="user-name" id="userName"><?php echo $_SESSION['name']; ?></span>
+                                            </div>
+                                            <div class="dropdown-menu">
+                                                <a href="my-account.php" class="dropdown-item">
+                                                    <i class="icon">👤</i> My Account
+                                                </a>
+                                                <a href="orders.php" class="dropdown-item">
+                                                    <i class="icon">📦</i> My Orders
+                                                </a>
+                                                <a href="settings.php" class="dropdown-item">
+                                                    <i class="icon">⚙️</i> Settings
+                                                </a>
+                                                <div class="dropdown-divider"></div>
+                                                <a href="logout.php" class="dropdown-item logout">
+                                                    <i class="icon">🚪</i> Logout
+                                                </a>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+
                                     <div class="mini_cart_wrapper">
                                         <a href="javascript:void(0)"><img src="assets/img/shopping-bag.png" alt=""></a>
                                         <span class="cart_quantity">2</span>
@@ -290,17 +296,17 @@
                             <div class="main_menu menu_position">
                                 <nav>
                                     <ul>
-                                        <li><a href="index-2.html">home</a></li>
+                                        <li><a href="/home">home</a></li>
                                         <li><a href="product-details.html">Product</a></li>
 
                                         <li><a class="active" href="#">pages <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
-                                                <li><a href="about.html">About Us</a></li>
-                                                <li><a href="contact.html">contact</a></li>
+                                                <li><a href="/about">About Us</a></li>
+                                                <li><a href="/contact">contact</a></li>
                                                 <li><a href="privacy-policy.html">privacy policy</a></li>
                                                 <li><a href="faq.html">Frequently Questions</a></li>
-                                                <li><a href="login.html">login</a></li>
-                                                <li><a href="register.html">register</a></li>
+                                                <li><a href="/login">login</a></li>
+                                                <li><a href="/register">register</a></li>
                                                 <li><a href="forget-password.html">Forget Password</a></li>
                                                 <li><a href="404.html">Error 404</a></li>
                                                 <li><a href="cart.html">cart</a></li>
@@ -314,7 +320,7 @@
                                                 <li><a href="blog-details.html">blog details</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html"> Contact Us</a></li>
+                                        <li><a href="/contact"> Contact Us</a></li>
                                     </ul>
                                 </nav>
                             </div>

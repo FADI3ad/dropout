@@ -14,19 +14,11 @@ class Request
 
     public function __construct()
     {
-        $this->setPath();
-        $this->setMethod();
-    }
-
-    public function setPath()
-    {
         $this->Path = $_SERVER['REQUEST_URI'];
-    }
-
-    public function setMethod()
-    {
         $this->method = $_SERVER['REQUEST_METHOD'];
     }
+
+
 
     public function getPath()
     {
@@ -36,5 +28,27 @@ class Request
     public function getMethod()
     {
         return $this->method;
+    }
+
+
+    public function getData()
+    {
+        if ($this->method === 'GET') {
+            return $_GET;
+        }
+
+        if ($this->method === 'POST') {
+            return $_POST;
+        }
+    }
+    public function input($fieldName)
+    {
+        if ($this->method === 'GET') {
+            return $_GET[$fieldName];
+        }
+
+        if ($this->method === 'POST') {
+            return $_POST[$fieldName];
+        }
     }
 }

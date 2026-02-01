@@ -1,3 +1,4 @@
+    <?php require_once __DIR__ . "/components/header.php" ?>
     <section class="about_section mt-60">
         <div class="container">
             <div class="row align-items-center">
@@ -165,3 +166,4 @@
         </div>
     </div>
     <!--team area end-->
+    <?php require_once __DIR__ . "/components/footer.php" ?>

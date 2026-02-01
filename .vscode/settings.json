@@ -1,0 +1,30 @@
+{
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "OutputHightlight.log.error",
+                "settings": {
+                    "foreground": "#FF0000"
+                }
+            },
+            {
+                "scope": "OutputHightlight.log.warning",
+                "settings": {
+                    "foreground": "#f1f52acc"
+                }
+            },
+            {
+                "scope": "OutputHightlight.log.info",
+                "settings": {
+                    "foreground": "#2cd3c5"
+                }
+            },
+            {
+                "scope": "OutputHightlight.log.debug",
+                "settings": {
+                    "foreground": "#888585"
+                }
+            }
+        ]
+    }
+}

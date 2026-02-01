@@ -6,11 +6,18 @@ namespace Core;
 class Router
 {
     private string $path;
-
     private string $method;
-
     private array $routes = [];
+    private Request $request; 
 
+    public function __construct(Request $request)
+    {
+        $this->request = $request;
+        $this->path = $request->getPath();
+        $this->method = $request->getMethod();
+    }
+
+    //methods 
     public function get($uri, array|callable $action)
     {
         $this->routes['GET'][$uri] = $action;
@@ -24,31 +31,12 @@ class Router
 
 
 
-    public function setPath(string $path)
-    {
-        $this->path = $path;
-    }
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    public function setMethod(string $method)
-    {
-        $this->method = $method;
-    }
-    public function getMethod()
-    {
-        return $this->method;
-    }
-
-
 
 
     public function dispatch()
     {
-        $path = $this->getPath();
-        $method = $this->getMethod();
+        $path = $this->path;
+        $method = $this->method;
 
         if (isset($this->routes[$method][$path])) {
             $action = $this->routes[$method][$path];
@@ -58,7 +46,7 @@ class Router
                 $controller = $action[0];
                 $method = $action[1];
                 $class = new $controller();
-                $class->$method();
+                $class->$method($this->request);
             }
         } else {
             include_once '../resources/views/errors/404.php';
@@ -78,8 +66,4 @@ class Router
 
 
 
-    public function routes(): array
-    {
-        return $this->routes;
-    }
 }

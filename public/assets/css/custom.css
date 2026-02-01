@@ -18,6 +18,25 @@ img {
 	}
 }
 
+
+
+.header_wishlist,
+.welcome-container {
+
+    padding: 10px;
+    border-radius: 5px;
+    margin: 20px;
+    
+}
+
+
+.welcome-message {
+    /* Add your desired styles for the welcome message here */
+    font-weight: bold;
+    font-size: 22px;
+    color: white;
+}
+
 .tracking-product {
     margin-bottom: 200px;
 }

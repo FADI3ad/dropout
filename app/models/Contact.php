@@ -1,22 +1,25 @@
 <?php
 
-namespace App\Models;
 
+namespace App\models;
 
 use Core\BaseModel;
 
 
-class User extends BaseModel
+
+
+
+class Contact extends BaseModel
 {
-    protected  int $id;
-    protected  string $name;
-    protected  string $email;
-    protected  string $password;
+
+    protected int $id;
+    protected string $name;
+    protected string $email;
+    protected string $message;
 
 
 
 
-    
     public function getId()
     {
         return $this->id;
@@ -29,10 +32,13 @@ class User extends BaseModel
     {
         return $this->email;
     }
-    public function getPassword()
+    public function getMessage()
     {
-        return $this->password;
+        return $this->message;
     }
+
+
+
 
 
 

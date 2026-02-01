@@ -12,3 +12,9 @@ function view(string $view)
         echo "no view";
     }
 }
+function redirect() {
+    
+}
+function to_route(){
+    
+}
