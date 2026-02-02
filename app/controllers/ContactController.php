@@ -20,6 +20,10 @@ class ContactController
 
     public function store(Request $request)
     {
+
+        //dont forget validation 
+
+        
         Contact::create('contacts', [
             "name" => $request->input('name'),
             "email" => $request->input('email'),

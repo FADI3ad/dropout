@@ -28,6 +28,7 @@ class UserController
         $user = User::create('users', [
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'role' => 'user',
             'password' => password_hash($request->input('password'), PASSWORD_DEFAULT)
         ]);
 
@@ -36,6 +37,7 @@ class UserController
             $session->store('user_id', $user->getId());
             $session->store('name', $user->getName());
             $session->store('email', $user->getEmail());
+            $session->store('role', $user->getRole());
 
             header('Location: /home');
             exit();
@@ -62,9 +64,22 @@ class UserController
             $session->store('user_id', $user[0]->getId());
             $session->store('name', $user[0]->getName());
             $session->store('email', $user[0]->getEmail());
+            $session->store('role', $user[0]->getRole());
         }
 
         header('Location: /home');
         exit();
     }
+
+    public function logout()
+    {
+        $session = new Session();
+        $session->destroy();
+
+        header('Location: /home');
+        exit();
+    }
+
+    
+
 }

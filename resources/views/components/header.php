@@ -199,13 +199,13 @@
                                 <div class="middel_right_info">
 
 
-                                    <?php if (!isset($_SESSION['user_id'])): ?>
+                                    <?php if (!authCheck()): ?>
                                         <div class="header_wishlist">
                                             <a href="/register"><img src="assets/img/user.png" alt=""></a>
                                         </div>
                                     <?php endif; ?>
                                     <?php
-                                    if (isset($_SESSION['user_id'])): ?>
+                                    if (authCheck()): ?>
                                         <div class="welcome-container">
                                             <div class="welcome-message">
                                                 Welcome, <span class="user-name" id="userName"><?php echo $_SESSION['name']; ?></span>
@@ -221,9 +221,12 @@
                                                     <i class="icon">⚙️</i> Settings
                                                 </a>
                                                 <div class="dropdown-divider"></div>
-                                                <a href="logout.php" class="dropdown-item logout">
-                                                    <i class="icon">🚪</i> Logout
-                                                </a>
+                                                <form action="/logout" method="POST" class="logout-form">
+                                                    <button type="submit" class="dropdown-item logout">
+                                                        <i class="icon">🚪</i> Logout
+                                                    </button>
+                                                </form>
+
                                             </div>
                                         </div>
                                     <?php endif; ?>

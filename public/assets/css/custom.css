@@ -37,6 +37,81 @@ img {
     color: white;
 }
 
+
+.welcome-container {
+    position: relative;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* صندوق الدروب داون */
+.dropdown-menu {
+    position: absolute;
+    top: 120%;
+    right: 0;
+    background: #fff;
+    border-radius: 12px;
+    min-width: 220px;
+    padding: 8px 0;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+    
+    opacity: 0;
+    transform: translateY(-10px) scale(0.98);
+    pointer-events: none;
+
+    transition: 
+        opacity 0.25s ease,
+        transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* يظهر مع الهوفر */
+.welcome-container:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+/* عناصر القائمة */
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+
+    transition: background 0.2s ease, padding-left 0.2s ease;
+}
+
+/* هوفر على العناصر */
+.dropdown-item:hover {
+    background: #f5f7fa;
+    padding-left: 22px;
+}
+
+/* الايقونات */
+.dropdown-item .icon {
+    font-size: 16px;
+}
+
+/* فاصل */
+.dropdown-divider {
+    height: 1px;
+    background: #eee;
+    margin: 6px 0;
+}
+
+/* لوج اوت بلون مختلف */
+.dropdown-item.logout {
+    color: #e74c3c;
+}
+
+.dropdown-item.logout:hover {
+    background: rgba(231, 76, 60, 0.1);
+}
+
+
 .tracking-product {
     margin-bottom: 200px;
 }

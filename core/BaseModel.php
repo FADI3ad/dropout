@@ -66,7 +66,7 @@ abstract class BaseModel
         $rows = $stmt->fetchAll(self::getPdoConnection()::FETCH_ASSOC);
         $elements = [];
 
-        
+
         foreach ($rows as $row) {
             $model = new static();
             foreach ($row as $key => $val) {
@@ -77,7 +77,27 @@ abstract class BaseModel
 
         return $elements;
     }
+    public static function all(string $tableName)
+    {
+        $sql = "SELECT * FROM $tableName";
+        $stmt = self::getPdoConnection()->query($sql);
+        $rows = $stmt->fetchAll(self::getPdoConnection()::FETCH_ASSOC);
+        $elements = [];
+        foreach ($rows as $row) {
+            $model = new static();
+            foreach ($row as $key => $val) {
+                $model->$key = $val;
+            }
+            $elements[] = $model;
+        }
 
-
-
+        return $elements;
+    }
+    public static function destroy(string $tableName, string $column, string $operator, string $value)
+    {
+        $sql = "DELETE FROM $tableName WHERE $column $operator ?";
+        $stmt = self::getPdoConnection()->prepare($sql);
+        $success = $stmt->execute([$value]);
+        return $success;
+    }
 }
