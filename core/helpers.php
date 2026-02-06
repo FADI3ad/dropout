@@ -4,7 +4,7 @@
 
 
 
-function view(string $view , $data='')
+function view(string $view , $data='',$dataa = [])
 {
     if (file_exists(__DIR__ . "/../resources/views/$view")) {
         

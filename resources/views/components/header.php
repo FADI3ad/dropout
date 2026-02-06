@@ -1,4 +1,8 @@
-<?php session_start(); ?>
+<?php
+session_start();
+define('BASE_URL', '/');
+?>
+
 <!doctype html>
 <html class="no-js" lang="en">
 
@@ -18,11 +22,10 @@
 
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?= 'assets/css/plugins.css' ?>">
-    <!-- assets/css/plugins.css -->
-    <!-- Main Style CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/custom.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/plugins.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/style.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/custom.css">
+
 
 </head>
 
@@ -61,20 +64,20 @@
 
                             <?php if (!isset($_SESSION['user_id'])): ?>
                                 <div class="header_wishlist">
-                                    <a href="/register"><img src="assets/img/user.png" alt=""></a>
+                                    <a href="/register"><img src="<?= BASE_URL ?>assets/img/user.png" alt=""></a>
                                 </div>
                             <?php endif; ?>
 
 
 
                             <div class="mini_cart_wrapper">
-                                <a href="javascript:void(0)"><img src="assets/img/shopping-bag.png" alt=""></a>
+                                <a href="javascript:void(0)"><img src="<?= BASE_URL ?>assets/img/shopping-bag.png" alt=""></a>
                                 <span class="cart_quantity">2</span>
                                 <!--mini cart-->
                                 <div class="mini_cart">
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                            <a href="#"><img src="<?= BASE_URL ?>assets/img/s-product/product.jpg" alt=""></a>
                                         </div>
                                         <div class="cart_info">
                                             <a href="#">Sit voluptatem rhoncus sem lectus</a>
@@ -86,7 +89,7 @@
                                     </div>
                                     <div class="cart_item">
                                         <div class="cart_img">
-                                            <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
+                                            <a href="#"><img src="<?= BASE_URL ?>assets/img/s-product/product2.jpg" alt=""></a>
                                         </div>
                                         <div class="cart_info">
                                             <a href="#">Natus erro at congue massa commodo</a>
@@ -183,7 +186,7 @@
                     <div class="row align-items-center">
                         <div class="col-lg-3 col-md-6">
                             <div class="logo">
-                                <a href="/home"><img src="assets/img/logo/logo.png" alt=""></a>
+                                <a href="/home"><img src="<?= BASE_URL ?>assets/img/logo/logo.png" alt=""></a>
                             </div>
                         </div>
                         <div class="col-lg-9 col-md-6">
@@ -201,7 +204,7 @@
 
                                     <?php if (!authCheck()): ?>
                                         <div class="header_wishlist">
-                                            <a href="/register"><img src="assets/img/user.png" alt=""></a>
+                                            <a href="/register"><img src="<?= BASE_URL ?>assets/img/user.png" alt=""></a>
                                         </div>
                                     <?php endif; ?>
                                     <?php
@@ -232,13 +235,13 @@
                                     <?php endif; ?>
 
                                     <div class="mini_cart_wrapper">
-                                        <a href="javascript:void(0)"><img src="assets/img/shopping-bag.png" alt=""></a>
+                                        <a href="javascript:void(0)"><img src="<?= BASE_URL ?>assets/img/shopping-bag.png" alt=""></a>
                                         <span class="cart_quantity">2</span>
                                         <!--mini cart-->
                                         <div class="mini_cart">
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="assets/img/s-product/product.jpg" alt=""></a>
+                                                    <a href="#"><img src="<?= BASE_URL ?>assets/img/s-product/product.jpg" alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">Sit voluptatem rhoncus sem lectus</a>
@@ -250,7 +253,7 @@
                                             </div>
                                             <div class="cart_item">
                                                 <div class="cart_img">
-                                                    <a href="#"><img src="assets/img/s-product/product2.jpg" alt=""></a>
+                                                    <a href="#"><img src="<?= BASE_URL ?>assets/img/s-product/product2.jpg" alt=""></a>
                                                 </div>
                                                 <div class="cart_info">
                                                     <a href="#">Natus erro at congue massa commodo</a>
@@ -300,18 +303,13 @@
                                 <nav>
                                     <ul>
                                         <li><a href="/home">home</a></li>
-                                        <li><a href="product-details.html">Product</a></li>
+                                        <li><a href="/product">Our Products</a></li>
 
                                         <li><a class="active" href="#">pages <i class="fa fa-angle-down"></i></a>
                                             <ul class="sub_menu pages">
-                                                <li><a href="/about">About Us</a></li>
-                                                <li><a href="/contact">contact</a></li>
                                                 <li><a href="privacy-policy.html">privacy policy</a></li>
                                                 <li><a href="faq.html">Frequently Questions</a></li>
-                                                <li><a href="/login">login</a></li>
-                                                <li><a href="/register">register</a></li>
                                                 <li><a href="forget-password.html">Forget Password</a></li>
-                                                <li><a href="404.html">Error 404</a></li>
                                                 <li><a href="cart.html">cart</a></li>
                                                 <li><a href="tracking.html">tracking</a></li>
                                                 <li><a href="checkout.html">checkout</a></li>
@@ -324,6 +322,7 @@
                                             </ul>
                                         </li>
                                         <li><a href="/contact"> Contact Us</a></li>
+                                        <li><a href="/about">About Us</a></li>
                                     </ul>
                                 </nav>
                             </div>

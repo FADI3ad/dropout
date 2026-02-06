@@ -34,8 +34,9 @@ class UserController
 
         if ($user) {
             $session = new Session();
+            $firstName = explode(' ', $request->input('name'))[0];
             $session->store('user_id', $user->getId());
-            $session->store('name', $user->getName());
+            $session->store('name', $firstName);
             $session->store('email', $user->getEmail());
             $session->store('role', $user->getRole());
 
@@ -48,7 +49,7 @@ class UserController
     {
 
 
-    
+
         //dont forget make valdation
 
 
@@ -61,8 +62,10 @@ class UserController
 
         if ($user && password_verify($password, $user[0]->getPassword())) {
             $session = new Session();
+            $firstName = explode(' ',$user[0]->getName())[0];
+            
             $session->store('user_id', $user[0]->getId());
-            $session->store('name', $user[0]->getName());
+            $session->store('name', $firstName );
             $session->store('email', $user[0]->getEmail());
             $session->store('role', $user[0]->getRole());
         }
@@ -79,7 +82,4 @@ class UserController
         header('Location: /home');
         exit();
     }
-
-    
-
 }

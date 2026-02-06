@@ -58,7 +58,7 @@
 							</div>
 							<div class="subscribe_form">
 								<h3>Join Our Newsletter Now</h3>
-								<form id="mc-form" class="mc-form footer-newsletter">
+								<form id="mc-form" class="mc-form footer-newsletter" method="post" action="">
 									<input id="mc-email" type="email" autocomplete="off" placeholder="Your email address..." />
 									<button id="mc-submit">Subscribe!</button>
 								</form>

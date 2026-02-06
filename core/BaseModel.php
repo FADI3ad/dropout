@@ -58,8 +58,6 @@ abstract class BaseModel
     //return array of objects 
     public static function where(string $tableName, string $column, string $operator, string $value): array
     {
-
-
         $sql = "SELECT * FROM $tableName where $column $operator '$value'";
 
         $stmt = self::getPdoConnection()->query($sql);
@@ -74,7 +72,6 @@ abstract class BaseModel
             }
             $elements[] = $model;
         }
-
         return $elements;
     }
     public static function all(string $tableName)
@@ -90,7 +87,6 @@ abstract class BaseModel
             }
             $elements[] = $model;
         }
-
         return $elements;
     }
     public static function destroy(string $tableName, string $column, string $operator, string $value)
@@ -100,4 +96,5 @@ abstract class BaseModel
         $success = $stmt->execute([$value]);
         return $success;
     }
+
 }
